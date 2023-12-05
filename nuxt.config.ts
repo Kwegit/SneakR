@@ -5,7 +5,9 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
-    ['@nuxtjs/supabase'],
-    ['@nuxtjs/algolia'],
-  ]
+    '@nuxtjs/supabase',
+  ],
+  supabase: {
+    redirect: false,
+  },
 })
