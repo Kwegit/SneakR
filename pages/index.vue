@@ -1,32 +1,52 @@
 <template>
- <div class="home">
-    <header class="flex justify-between items-center py-4 px-6 bg-gray-900">
-      <!-- Barre de recherche -->
-      <input type="text" placeholder="Rechercher" class="px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:bg-gray-700">
-
-      <!-- Panier -->
-      <div class="relative">
-        <button class="flex items-center text-white">
-          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-            <!-- Icône du panier -->
-          </svg>
-          <span class="ml-1">Panier</span>
-        </button>
-        <!-- Afficher le nombre d'articles dans le panier -->
-        <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full px-2 py-1 text-xs">3</span>
+  <div class="bg-grey-900 text-white">
+    <header class="py-4 px-6 ">
+      <nav class="flex items-center justify-between">
+        <div>
+          <!-- Logo ou nom du site -->
+        </div>
+        <div class="ml-auto">
+          <!-- Menu -->
+          <ul class="flex space-x-4">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Panier</a></li>
+            <li><a href="#" class="text-white ml-4">Se connecter</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="flex justify-center mt-5">
+        <!-- Barre de recherche -->
+        <input type="text" placeholder="Rechercher" class="bg-white ml-5 h-11 w-full transform border-b-2 border-light-gray text-xl font-semibold transition hover:border-b-2 hover:border-black focus:border-b-2 focus:border-black focus:outline-none md:ml-12">
+      </div>
+      <div class="flex justify-end mt-4">
+       
+        <!-- Login -->
+        
       </div>
     </header>
 
-    <h1 class="text-3xl font-bold text-white mt-8 mb-4">Bienvenue sur notre site de sneakers !</h1>
+    <main class="py-8 px-6">
+      <!-- Contenu du main -->
+      <div>
+   <ProductCard />
+      </div>
+   
+    </main>
 
-    <div class="product-list">
-      <!-- Ici, vous afficherez les produits -->
-    </div>
+    <footer class="py-4 px-6 ">
+      <!-- Contenu du footer -->
+    </footer>
+
   </div>
 </template>
 
 <script>
-
+export default {
+  name: 'App',
+  // Composants, méthodes, etc.
+}
 </script>
 
 <style scoped>
@@ -34,13 +54,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.home {
-  background-color: black;
-  color: mauve;
+/* Styles spécifiques au site vitrine */
+.bg-black {
+  background-color: rgb(37, 35, 35);
 }
 
-/* .product-list {
-    /* Add your styles for the product list here */
+.text-white {
+  color: rgb(172, 80, 193);
+}
 
-
+/* Autres styles personnalisés */
 </style>
