@@ -1,122 +1,47 @@
 <template>
-    <div class="w-80 bg-white shadow rounded">
-  <div
-    class="h-48 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center rounded-xl"
-    style="background-image: url('https://images.pexels.com/photos/7989741/pexels-photo-7989741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')"
-  >
-    <div class="flex justify-between">
-      <input type="checkbox"/>
-      <button class="text-white hover:text-blue-500">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 color"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 4v16m8-8H4"
-          />
-        </svg>
-      </button>
-    </div>
-    <div>
-  <span
-    class="uppercase text-xs bg-green-50 p-0.5 border-green-500 border rounded text-green-700 font-medium select-none"
-  >
-    available
-  </span>
-    </div>
-  </div>
-  <div class="p-4 flex flex-col items-center ">
-    <p class="text-gray-400 font-light text-xs text-center">
-      Hammond robotics
-    </p>
-    <h1 class="text-gray-800 text-center mt-1">Item name</h1>
-    <p class="text-center text-gray-800 mt-1">€1299</p>
-    <div class="inline-flex items-center mt-2">
-      <button
-        class="bg-white rounded-l border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M20 12H4"
-          />
-        </svg>
-      </button>
-      <div
-        class="bg-gray-100 border-t border-b border-gray-100 text-gray-600 hover:bg-gray-100 inline-flex items-center px-4 py-1 select-none"
-      >
-        2
-      </div>
-      <button
-        class="bg-white rounded-r border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 4v16m8-8H4"
-          />
-        </svg>
-      </button>
-    </div>
-
-    <button
-      class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
-    >
-      Add to order
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6 ml-2"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    </button>
-
-    <div class="flex justify-between w-full mt-4">
-      <div class="flex items-center text-gray-500">
-        <input id="input1" type="checkbox" class="mr-2"/>
-        <label for="input1" class="select-none cursor-pointer">Compare</label>
-      </div>
-      <div>
-        <button
-          class="py-1 px-4 bg-white text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center">
-          Add to List
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24"
-               stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </button>
+<!-- component -->
+<div class="py-6">
+  <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="w-1/3 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')">
+    </div> 
+    <div class="w-2/3 p-4">
+      <h1 class="text-gray-900 font-bold text-2xl">Backpack</h1>
+      <p class="mt-2 text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit In odit exercitationem fuga id nam quia</p>
+      
+      <div class="flex item-center justify-between mt-3">
+        <h1 class="text-gray-700 font-bold text-xl">$220</h1>
+        <button class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">Add to Card</button>
       </div>
     </div>
   </div>
 </div>
 </template>
+
+<script>
+// export default {
+//   async created() {
+//     try {
+//       const { data, error } = await this.$supabase
+//         .from('products')
+//         .select('*')
+//         .eq('id', this.productId)
+//         .single()
+
+//       if (error) {
+//         console.error(error)
+//       } else {
+//         console.log(data)
+//         // Utilisez les données récupérées pour afficher les informations du produit
+//       }
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   },
+//   props: {
+//     productId: {
+//       type: String,
+//       required: true
+//     }
+//   }
+// }
+</script>

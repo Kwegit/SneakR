@@ -7,12 +7,11 @@
         </div>
         <div class="ml-auto">
           <!-- Menu -->
-          <ul class="flex space-x-4">
+          <ul class="flex space-x-4 block text-sm font-medium leading-6 text-gray-900">
             <li><a href="#">Accueil</a></li>
             <li><a href="#">Produits</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Panier</a></li>
-            <li><a href="#" class="text-white ml-4">Se connecter</a></li>
+            <li><a href="/Contact">Contact</a></li>
+            <li><a href="/Login" class="text-white ml-5">Se connecter</a></li>
           </ul>
         </div>
       </nav>
@@ -27,10 +26,18 @@
       </div>
     </header>
 
-    <main class="py-8 px-6">
+    <main class="flex py-8 px-6 grid-cols-4 ">
       <!-- Contenu du main -->
-      <div>
+      <div class="flex flex-wrap space-x-4">
    <ProductCard />
+   <ProductCard />
+   <ProductCard />
+   <ProductCard />
+   <ProductCard />
+   <ProductCard />
+   <ProductCard />
+   <ProductCard />
+
       </div>
    
     </main>
@@ -42,11 +49,14 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-  // Composants, méthodes, etc.
-}
+<script setup>
+
+const client = useSupabaseClient()
+
+const { data: SneakR } = await useAsyncData('chaussures', async () => client.from('chaussures').select('name'))
+
+console.log(SneakR.value)
+
 </script>
 
 <style scoped>
