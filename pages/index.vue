@@ -29,34 +29,23 @@
     <main class="flex py-8 px-6 grid-cols-4 ">
       <!-- Contenu du main -->
       <div class="flex flex-wrap space-x-4">
-   <ProductCard />
-   <ProductCard />
-   <ProductCard />
-   <ProductCard />
-   <ProductCard />
-   <ProductCard />
-   <ProductCard />
-   <ProductCard />
-
+        <ProductCard v-for="SneakR in chaussures" :SneakR="SneakR" />
       </div>
-   
     </main>
 
     <footer class="py-4 px-6 ">
       <!-- Contenu du footer -->
     </footer>
-
   </div>
 </template>
 
 <script setup>
-
 const client = useSupabaseClient()
 
-const { data: SneakR } = await useAsyncData('chaussures', async () => client.from('chaussures').select('name'))
-
-console.log(SneakR.value)
-
+const { data: chaussures } = await useAsyncData("chaussures", async () => {
+  const { data } = await client.from("chaussures").select("['image.small'], name, estimatedMarketValue").order("brand").range(0, 10);
+  return data;
+});
 </script>
 
 <style scoped>
