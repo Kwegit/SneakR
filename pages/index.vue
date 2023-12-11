@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-grey-900 text-white">
+  <div class="bg-grey-900 text-white ">
     <header class="py-4 px-6 ">
       <nav class="flex items-center justify-between">
         <div>
@@ -19,22 +19,31 @@
         <!-- Barre de recherche -->
         <input type="text" placeholder="Rechercher" class="bg-white ml-5 h-11 w-full transform border-b-2 border-light-gray text-xl font-semibold transition hover:border-b-2 hover:border-black focus:border-b-2 focus:border-black focus:outline-none md:ml-12">
       </div>
-      <div class="flex justify-end mt-4">
-       
-        <!-- Login -->
-        
-      </div>
     </header>
 
-    <main class="flex py-8 px-6 grid-cols-4 ">
-      <!-- Contenu du main -->
-      <div class="flex flex-wrap space-x-4">
+      <div class="grid grid-cols-4  ">
         <ProductCard v-for="SneakR in chaussures" :SneakR="SneakR" />
       </div>
-    </main>
+    
 
     <footer class="py-4 px-6 ">
-      <!-- Contenu du footer -->
+     <div class="grid grid-cols-4">
+      <ProductCard v-for="(SneakR, index) in paginatedChaussures" :key="index" :SneakR="SneakR" />
+    </div>
+
+    <div class="flex justify-center mt-5">
+      <!-- Pagination -->
+      <nav>
+        <ul class="flex space-x-2">
+          <li>
+            <button @click="previousPage" :disabled="currentPage === 1">Previous</button>
+          </li>
+          <li>
+            <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
     </footer>
   </div>
 </template>
@@ -43,17 +52,18 @@
 const client = useSupabaseClient()
 
 const { data: chaussures } = await useAsyncData("chaussures", async () => {
-  const { data } = await client.from("chaussures").select("['image.small'], name, estimatedMarketValue").order("brand").range(0, 10);
+  const { data } = await client.from("chaussures").select("['image.small'], name, estimatedMarketValue").order("brand").range(0, 30);
   return data;
 });
+
+
+
 </script>
 
 <style scoped>
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-/* Styles spécifiques au site vitrine */
 .bg-black {
   background-color: rgb(37, 35, 35);
 }
@@ -61,6 +71,4 @@ const { data: chaussures } = await useAsyncData("chaussures", async () => {
 .text-white {
   color: rgb(172, 80, 193);
 }
-
-/* Autres styles personnalisés */
 </style>
