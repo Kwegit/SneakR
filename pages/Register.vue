@@ -10,14 +10,14 @@
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Creat an account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="#">
+              <div class="space-y-4 md:space-y-6">
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com">
+                      <input v-model="email" type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com">
                   </div>
                   <div>
                       <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      <input v-model="password" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   </div>
                   <div>
                       <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
@@ -31,11 +31,11 @@
                         <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
                       </div>
                   </div>
-                  <button type="submit" class="flex w-full justify-center rounded-md bg-[#9385FF] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create an account</button>
+                  <button @click="signUp" type="submit" class="flex w-full justify-center rounded-md bg-[#9385FF] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create an account</button>
                   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                       Already have an account? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
                   </p>
-              </form>
+                </div>
           </div>
       </div>
   </div>
@@ -43,7 +43,30 @@
 </template>
 
 <script lang="ts" setup>
+const client = useSupabaseClient();
+const email = ref("");
+const password = ref("");
+const errorMsg = ref("");
+const successMsg = ref("");
 
+async function signUp() {
+  try {
+    const { data, error } = await client.auth.signUp({
+      email: email.value,
+      password: password.value,
+    });
+    if (error) throw error;
+    successMsg.value = "Votre compte a bien été créé";
+    setTimeout(() => {
+      successMsg.value = "";
+    }, 2000);
+  } catch (error: string | any) {
+    errorMsg.value = error.message;
+    setTimeout(() => {
+      errorMsg.value = "";
+    }, 2000);
+  }
+}
 </script>
 
 

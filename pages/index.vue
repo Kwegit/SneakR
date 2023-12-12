@@ -27,31 +27,7 @@
     </div>
 
     <footer class="py-4 px-6">
-      <div class="grid grid-cols-4">
-        <ProductCard
-          v-for="(SneakR, index) in paginatedChaussures"
-          :key="index"
-          :SneakR="SneakR"
-        />
-      </div>
-
-      <div class="flex justify-center mt-5">
-        <!-- Pagination -->
-        <nav>
-          <ul class="flex space-x-2">
-            <li>
-              <button @click="previousPage" :disabled="currentPage === 1">
-                Previous
-              </button>
-            </li>
-            <li>
-              <button @click="nextPage" :disabled="currentPage === totalPages">
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Pagination />
     </footer>
   </div>
 </template>

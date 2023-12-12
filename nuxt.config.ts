@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   
   modules: [
+    '@nuxt/ui',
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     '@nuxtjs/supabase',
@@ -10,4 +11,8 @@ export default defineNuxtConfig({
   supabase: {
     redirect: false,
   },
+  colorMode: {
+    preference: 'light'
+  }
 })
+
