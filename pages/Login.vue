@@ -51,6 +51,7 @@ async function Login() {
       errorMsg.value = "";
     }, 2000);
   }
+  await navigateTo("/");
 }
  
    

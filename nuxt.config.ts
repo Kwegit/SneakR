@@ -9,7 +9,21 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
   ],
   supabase: {
-    redirect: false,
+    redirectOptions: {
+      // Pour rediriger l'utilisateur si il n'est pas connecté
+      login: "/Login", // Redirige vers la page de login s'il nes pas connecté ou s'il s'est logout
+      callback: "/",
+      exclude: [
+        // Page que l'utilisateur peut visiter sans être connecté
+        "/Login",
+        "/Register",
+        "/",
+        "/index",
+        "/detail/*",
+        "/updatePassword",
+        "/resetPassword",
+      ],
+    },
   },
   colorMode: {
     preference: 'light'

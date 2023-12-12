@@ -1,6 +1,29 @@
 <script setup>
 const page = ref(1)
 const items = ref(Array(55))
+
+const supabase = useSupabaseClient();
+const current_pagination = ref(1);
+const sneakersPerPage = 28;
+
+const { data: chaussures } = await useAsyncData("chaussures", async () => {
+  const { data } = await supabase
+    .from("chaussures")
+    .select("*")
+    .range(current_pagination.value * sneakersPerPage - sneakersPerPage, current_pagination.value * sneakersPerPage - 1);
+  return data;
+});
+
+watch(current_pagination, async () => {
+  const { data: chaussures } = await useAsyncData("chaussures", async () => {
+    const { data } = await supabase
+      .from("chaussures")
+      .select("*")
+      .range(current_pagination.value * sneakersPerPage - sneakersPerPage, current_pagination.value * sneakersPerPage - 1);
+    window.scrollTo(0, 0);
+    return data;
+  });
+});
 </script>
 
 <template>
