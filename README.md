@@ -1,75 +1,62 @@
-# Nuxt 3 Minimal Starter
+# Nom du Projet
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Description courte du projet.
 
-## Setup
+## Table des matières
 
-Make sure to install the dependencies:
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Utilisation](#utilisation)
+
+
+## Installation
+
+1. Clone repo :
 
 ```bash
-# npm
-npm install
+git clone https://github.com/Kwegit/SneakR.git
+```
 
-# pnpm
-pnpm install
+2. Go to the project directory :
 
-# yarn
+```bash
+cd SneakR
+```
+
+3. install dépendances :
+
+```bash
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Configuration 
 
-Start the development server on `http://localhost:3000`:
+### Supabase 
+
+1. Create an account on Supabase.
+
+2.  Create a new application and note your URL and API key.
+ 
+3. Create an .env file at the root of the project and add the following environment variables:
 
 ```bash
-# npm
+SUPABASE_URL="https://your-url.supabase.co"
+SUPABASE_KEY="your-api-key"
+```
+
+
+### import data to supabase 
+
+## utilisation 
+
+1. launch project 
+
+```bash
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+2. access the application
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+http://localhost:3000
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
