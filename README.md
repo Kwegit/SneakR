@@ -1,6 +1,6 @@
-# Nom du Projet
+# SneakR
 
-Description courte du projet.
+A site bringing together all the pairs of sneakers you can collect
 
 ## Table des matières
 
