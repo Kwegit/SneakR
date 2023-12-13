@@ -66,6 +66,7 @@ async function signUp() {
       errorMsg.value = "";
     }, 2000);
   }
+  await navigateTo("/login");
 }
 </script>
 
